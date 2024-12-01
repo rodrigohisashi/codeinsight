@@ -33,5 +33,7 @@
 ---
 
 ## Observações
-- Certifique-se de que os serviços do CodeInsight estejam rodando (via Docker) antes de utilizar o Moodle para garantir que as requisições sejam processadas corretamente.
-- Consulte a documentação adicional para mais informações sobre os modelos de LLMs utilizados e as análises realizadas nos exercícios.
+- Certifique-se de que os serviços do CodeInsight estejam em execução (via Docker) antes de utilizar o Moodle, para garantir que as requisições sejam processadas corretamente.
+- Durante os testes, utilizamos o Moodle em contêiner Docker, configurado para utilizar a mesma rede Docker que o CodeInsight, possibilitando a comunicação direta entre os serviços. Caso o ambiente seja configurado em produção, ajustes adicionais podem ser necessários, como a definição de redes externas, variáveis de ambiente e regras de firewall.
+- Para mais informações sobre os modelos de LLMs utilizados e as análises realizadas nos exercícios, consulte a documentação adicional incluída neste repositório.
+

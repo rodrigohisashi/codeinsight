@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      - MODEL_NAME=${MODEL_NAME}      
+    ports:
+      - "5100:5100"
+    depends_on:
+      - ollama
+    networks:
+      - app-network
+      - vpl-moodle-network
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ./ollama/ollama:/root/.ollama
+      - ./entrypoint.sh:/entrypoint.sh
+    ports:
+      - "11435:11434"
+    networks:
+      - app-network
+    entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+
+volumes:
+  ollama-keys:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
+  vpl-moodle-network:
+    external: true
+

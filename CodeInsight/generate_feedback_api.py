@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 
-def generate_feedback(problem_description, code_snippet, execution_code, model_name='zephyr'):
+def generate_feedback(problem_description, code_snippet, execution_code, model_name='mistral'):
     url = 'http://ollama:11434/api/generate'  # Assumindo que o Ollama está rodando localmente
     headers = {'Content-Type': 'application/json'}
     prompt = (
@@ -48,7 +48,7 @@ def generate_feedback_api():
     problem_description = data.get('problem_description')
     code_snippet = data.get('code_snippet')
     execution_code = data.get('execution_code')
-    model_name = data.get('model_name', 'zephyr')
+    model_name = data.get('model_name', 'mistral')
 
     if not all([problem_description, code_snippet, execution_code]):
         return jsonify({'error': 'Parâmetros faltando'}), 400
